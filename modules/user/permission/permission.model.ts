@@ -1,7 +1,8 @@
 import { model, Schema } from "mongoose";
+import { PermissionTypes } from "../../../utils/constants";
 
 export interface IPermission {
-  title: string;
+  title: PermissionTypes;
   description: string;
 }
 

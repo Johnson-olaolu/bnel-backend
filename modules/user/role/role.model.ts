@@ -1,29 +1,29 @@
 import { model, Schema } from "mongoose";
-import { RoleType } from "../../../utils/constants";
-import { IPermission } from "../permission/permission.model";
+import { PermissionTypes, RoleTypes } from "../../../utils/constants";
 
 export interface IRole {
-  title: RoleType;
+  title: RoleTypes;
   description: string;
-  permissions: Schema.Types.ObjectId[] | IPermission[];
+  permissions: PermissionTypes[];
 }
 
 const roleSchema = new Schema<IRole>({
   title: {
     type: String,
-    enum: RoleType,
     required: true,
   },
   description: {
     type: String,
     required: true,
   },
-  permissions: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Permission",
-    },
-  ],
+  permissions: {
+    type: [
+      {
+        type: String,
+      },
+    ],
+    required: true,
+  },
 });
 
 const Role = model("Role", roleSchema);

@@ -18,3 +18,8 @@ export class NotFoundError extends ApplicationError {
     super(message || "No User found.", 404);
   }
 }
+export class UnauthorizedError extends ApplicationError {
+  constructor(message: any) {
+    super(message || "Access Denied.", 401);
+  }
+}
